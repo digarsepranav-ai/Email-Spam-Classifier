@@ -4,9 +4,15 @@ import joblib
 import os
 import re
 
+
 # Create Flask app and serve static files
-app = Flask(__name__, static_folder="static")
+app = Flask(
+    __name__,
+    static_folder="static",
+    static_url_path="/static"
+)
 CORS(app)
+
 
 # Absolute path to model
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -36,13 +42,24 @@ def predict():
     message = data.get("message", "")
 
     cleaned = clean_txt(message)
-    pred = model.predict([cleaned])[0]
+
+    # Get prediction probabilities
     proba = model.predict_proba([cleaned])[0]
+    spam_prob = proba[1] * 100
+    ham_prob = proba[0] * 100
+
+    # 3-level classification logic
+    if spam_prob > 60:
+        label = "Spam 🚨"
+    elif spam_prob > 30:
+        label = "Suspicious ⚠️"
+    else:
+        label = "Ham ✅"
 
     return jsonify({
-        "prediction": "Spam" if pred == 1 else "Ham",
-        "spam_probability": round(float(proba[1]) * 100, 2),
-        "ham_probability": round(float(proba[0]) * 100, 2),
+        "label": label,
+        "spam_probability": round(spam_prob, 2),
+        "ham_probability": round(ham_prob, 2),
         "metrics": metrics
     })
 

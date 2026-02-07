@@ -13,13 +13,18 @@ async function predict() {
       body: JSON.stringify({ message })
     });
 
+    if (!response.ok) {
+      throw new Error("Backend error");
+    }
+
     const data = await response.json();
 
-    // Prediction text
+    if (!data.label) {
+      throw new Error("Invalid response from server");
+    }
+
     const predictionEl = document.getElementById("prediction");
     predictionEl.innerText = data.label;
-
-    // Reset prediction classes
     predictionEl.className = "prediction";
 
     const card = document.querySelector(".card");
@@ -36,7 +41,6 @@ async function predict() {
       card.classList.add("ham");
     }
 
-    // Probabilities
     document.getElementById("spamProb").innerText = data.spam_probability;
     document.getElementById("hamProb").innerText = data.ham_probability;
 
@@ -45,7 +49,6 @@ async function predict() {
     document.getElementById("hamBar").style.width =
       data.ham_probability + "%";
 
-    // Metrics
     document.getElementById("accuracy").innerText =
       data.metrics.accuracy.toFixed(3);
     document.getElementById("precision").innerText =
@@ -57,6 +60,6 @@ async function predict() {
 
   } catch (err) {
     console.error(err);
-    alert("Something went wrong. Check console.");
+    alert("Backend is waking up or unavailable. Please try again in a few seconds.");
   }
 }
