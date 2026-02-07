@@ -1,43 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Spam Classifier</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<textarea id="message" placeholder="Enter email text..."></textarea>
+<button onclick="predict()">Check</button>
 
-<div class="container">
-    <h1>📧 Spam Classifier</h1>
+<h2 id="prediction"></h2>
 
-    <textarea id="message" placeholder="Enter your message..."></textarea>
-    <button onclick="predict()">Check</button>
+<h3>Spam Probability: <span id="spamProb">-</span></h3>
+<h3>Ham Probability: <span id="hamProb">-</span></h3>
 
-    <div id="result" class="hidden">
-        <h2 id="prediction"></h2>
-
-        <div class="bar-container">
-            <p>Spam Probability</p>
-            <div class="bar">
-                <div id="spam-bar"></div>
-            </div>
-
-            <p>Ham Probability</p>
-            <div class="bar">
-                <div id="ham-bar"></div>
-            </div>
-        </div>
-
-        <div class="metrics">
-            <h3>Model Performance</h3>
-            <p>Accuracy: <span id="accuracy"></span></p>
-            <p>Precision: <span id="precision"></span></p>
-            <p>Recall: <span id="recall"></span></p>
-            <p>F1 Score: <span id="f1"></span></p>
-        </div>
-    </div>
-</div>
+<h2>Model Performance</h2>
+<p>Accuracy: <span id="accuracy">-</span></p>
+<p>Precision: <span id="precision">-</span></p>
+<p>Recall: <span id="recall">-</span></p>
+<p>F1 Score: <span id="f1">-</span></p>
 
 <script src="script.js"></script>
-</body>
-</html>
