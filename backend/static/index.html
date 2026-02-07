@@ -5,51 +5,66 @@
   <title>Email Spam Classifier</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font -->
+  <!-- Lato Font -->
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome Icons -->
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+  <!-- CSS -->
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
-  <div class="container">
+<div class="container">
+  <div class="card">
 
-    <div class="card">
-      <h1><i class="fa-solid fa-envelope-circle-check"></i> Spam Classifier</h1>
-      <p class="subtitle">AI-powered email spam detection</p>
+    <h1><i class="fa-solid fa-envelope"></i> Spam Classifier</h1>
+    <p class="subtitle">AI-powered email spam detection</p>
 
-      <textarea id="message" placeholder="Paste your email or message here..."></textarea>
+    <textarea id="message" placeholder="Paste email or message here..."></textarea>
 
-      <button type="button" onclick="predict()">
-        <i class="fa-solid fa-magnifying-glass"></i> Check
-      </button>
+    <!-- IMPORTANT: type=button -->
+    <button type="button" onclick="predict()">
+      <i class="fa-solid fa-magnifying-glass"></i> Check
+    </button>
 
-      <div class="result-card">
-        <h2 id="prediction">—</h2>
+    <h2 id="prediction">—</h2>
 
-        <div class="probability">
-          <div class="prob spam">
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            Spam: <span id="spamProb">-</span>%
-            <div class="bar-bg">
-              <div id="spamBar" class="bar"></div>
-            </div>
-          </div>
-
-          <div class="prob ham">
-            <i class="fa-solid fa-circle-check"></i>
-            Ham: <span id="hamProb">-</span>%
-            <div class="bar-bg">
-              <div id="hamBar" class="bar"></div>
-            </div>
-          </div>
+    <div class="probability">
+      <div class="prob spam">
+        <strong>Spam Probability</strong>
+        <div class="bar-bg">
+          <div id="spamBar" class="bar"></div>
         </div>
+        <span id="spamProb">-</span>%
+      </div>
 
-        <div class="metrics">
-          <h3><i class="fa-solid fa-chart-line"></i> Model Performance</h3>
-          <div class="metric-grid">
-            <div>Accuracy<br><span id="accuracy">-</span></div>
-            <div>P
+      <div class="prob ham">
+        <strong>Ham Probability</strong>
+        <div class="bar-bg">
+          <div id="hamBar" class="bar"></div>
+        </div>
+        <span id="hamProb">-</span>%
+      </div>
+    </div>
+
+    <div class="metrics">
+      <h3><i class="fa-solid fa-chart-line"></i> Model Performance</h3>
+
+      <div class="metric-grid">
+        <div>Accuracy<br><span id="accuracy">-</span></div>
+        <div>Precision<br><span id="precision">-</span></div>
+        <div>Recall<br><span id="recall">-</span></div>
+        <div>F1 Score<br><span id="f1">-</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ⚠️ MUST BE EXACT PATH -->
+<script src="/static/script.js"></script>
+
+</body>
+</html>
