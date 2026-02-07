@@ -15,22 +15,48 @@ async function predict() {
 
     const data = await response.json();
 
-    document.getElementById("prediction").innerText =
-      data.prediction === "Spam" ? "🚨 Spam Message" : "✅ Not Spam";
+    // Prediction text
+    const predictionEl = document.getElementById("prediction");
+    predictionEl.innerText = data.label;
 
+    // Reset prediction classes
+    predictionEl.className = "prediction";
+
+    const card = document.querySelector(".card");
+    card.className = "card";
+
+    if (data.label.includes("Spam")) {
+      predictionEl.classList.add("spam");
+      card.classList.add("spam");
+    } else if (data.label.includes("Suspicious")) {
+      predictionEl.classList.add("suspicious");
+      card.classList.add("suspicious");
+    } else {
+      predictionEl.classList.add("ham");
+      card.classList.add("ham");
+    }
+
+    // Probabilities
     document.getElementById("spamProb").innerText = data.spam_probability;
     document.getElementById("hamProb").innerText = data.ham_probability;
 
-    document.getElementById("spamBar").style.width = data.spam_probability + "%";
-    document.getElementById("hamBar").style.width = data.ham_probability + "%";
+    document.getElementById("spamBar").style.width =
+      data.spam_probability + "%";
+    document.getElementById("hamBar").style.width =
+      data.ham_probability + "%";
 
-    document.getElementById("accuracy").innerText = data.metrics.accuracy.toFixed(3);
-    document.getElementById("precision").innerText = data.metrics.precision.toFixed(3);
-    document.getElementById("recall").innerText = data.metrics.recall.toFixed(3);
-    document.getElementById("f1").innerText = data.metrics.f1_score.toFixed(3);
+    // Metrics
+    document.getElementById("accuracy").innerText =
+      data.metrics.accuracy.toFixed(3);
+    document.getElementById("precision").innerText =
+      data.metrics.precision.toFixed(3);
+    document.getElementById("recall").innerText =
+      data.metrics.recall.toFixed(3);
+    document.getElementById("f1").innerText =
+      data.metrics.f1_score.toFixed(3);
 
   } catch (err) {
     console.error(err);
-    alert("Error calling backend. Check console.");
+    alert("Something went wrong. Check console.");
   }
 }

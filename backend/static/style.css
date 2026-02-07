@@ -27,6 +27,19 @@ body {
   color: #fff;
   text-align: center;
   box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.card.spam {
+  box-shadow: 0 0 30px rgba(255, 77, 77, 0.7);
+}
+
+.card.suspicious {
+  box-shadow: 0 0 30px rgba(255, 193, 7, 0.7);
+}
+
+.card.ham {
+  box-shadow: 0 0 30px rgba(77, 255, 136, 0.7);
 }
 
 h1 {
@@ -66,12 +79,23 @@ button:hover {
   opacity: 0.9;
 }
 
-.result-card {
-  margin-top: 20px;
+#prediction {
+  margin: 15px 0;
+  font-size: 22px;
+  font-weight: bold;
 }
 
-#prediction {
-  margin-bottom: 15px;
+/* Prediction text colors */
+.prediction.spam {
+  color: #ff4d4d;
+}
+
+.prediction.suspicious {
+  color: #ffc107;
+}
+
+.prediction.ham {
+  color: #4dff88;
 }
 
 .probability {
