@@ -55,20 +55,19 @@ Email Spam Classifier/
 
 ## ⚙️ How to Run Locally
 
-### 1️⃣ Clone the Repository
-```bash
+** 1️⃣ **
 git clone https://github.com/digarsepranav-ai/email-spam-classifier.git
 cd email-spam-classifier
 
-### 2️⃣ Run Backend (Flask API)
+** 2️⃣ Run Backend (Flask API)**
 cd backend
 pip install -r requirements.txt
 python app.py
 
-### 3️⃣ Run Frontend
+** 3️⃣ Run Frontend**
 frontend/index.html
 
-### 🔁 API Endpoint
+** 🔁 API Endpoint**
 POST /predict
 
 Request Body
@@ -87,7 +86,7 @@ Response
     "f1_score": 0.965
   }
 }
-### 📊 Model Performance
+** 📊 Model Performance**
 
 High accuracy on the test dataset
 
@@ -97,14 +96,15 @@ F1-score used as the primary quality metric
 
 Probabilistic output improves interpretability
 
-### 🧪 Sample Input & Output
 
-Input
+** 🧪 Sample Input & Output**
+
+**Input**
 
 Congratulations! You have won a free prize.
 
 
-Output
+**Output**
 
 Prediction: Spam
 
