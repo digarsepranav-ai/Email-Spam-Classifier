@@ -8,7 +8,13 @@ app = Flask(__name__)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "spam_model.pkl")
 
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "model", "spam_model.pkl")
+
 saved = joblib.load(MODEL_PATH)
+
 model = saved["model"]
 metrics = saved["metrics"]
 
