@@ -1,75 +1,130 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-    background: rgba(0,0,0,0.3);
-    padding: 30px;
-    width: 420px;
-    border-radius: 15px;
-    text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  width: 420px;
+  padding: 25px;
+  border-radius: 18px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+h1 {
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 15px;
 }
 
 textarea {
-    width: 100%;
-    height: 100px;
-    border-radius: 10px;
-    padding: 10px;
-    border: none;
-    resize: none;
+  width: 100%;
+  height: 110px;
+  border-radius: 12px;
+  padding: 12px;
+  border: none;
+  resize: none;
+  margin-bottom: 12px;
+  font-size: 14px;
 }
 
 button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    background: #00ffcc;
-    font-size: 16px;
-    cursor: pointer;
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #00ffcc, #00c9a7);
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 button:hover {
-    background: #00ddb5;
+  opacity: 0.9;
 }
 
-.hidden {
-    display: none;
+.result-card {
+  margin-top: 20px;
 }
 
-.bar-container {
-    margin-top: 20px;
+#prediction {
+  margin-bottom: 15px;
+}
+
+.probability {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.prob {
+  flex: 1;
+  background: rgba(0,0,0,0.25);
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.bar-bg {
+  background: rgba(255,255,255,0.2);
+  height: 8px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 6px;
 }
 
 .bar {
-    background: #333;
-    border-radius: 10px;
-    overflow: hidden;
-    height: 20px;
-    margin-bottom: 10px;
+  height: 100%;
+  width: 0%;
+  transition: width 0.8s ease;
 }
 
-.bar div {
-    height: 100%;
-    width: 0%;
-    transition: width 1.2s ease;
+.spam .bar {
+  background: #ff4d4d;
 }
 
-#spam-bar {
-    background: #ff4d4d;
-}
-
-#ham-bar {
-    background: #4dff88;
+.ham .bar {
+  background: #4dff88;
 }
 
 .metrics {
-    margin-top: 20px;
-    text-align: left;
+  background: rgba(0,0,0,0.25);
+  padding: 12px;
+  border-radius: 14px;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.metric-grid div {
+  background: rgba(255,255,255,0.12);
+  padding: 10px;
+  border-radius: 10px;
 }

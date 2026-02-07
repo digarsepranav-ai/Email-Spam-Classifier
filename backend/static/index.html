@@ -1,16 +1,55 @@
-<textarea id="message" placeholder="Enter email text..."></textarea>
-<button onclick="predict()">Check</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Email Spam Classifier</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<h2 id="prediction"></h2>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
-<h3>Spam Probability: <span id="spamProb">-</span></h3>
-<h3>Ham Probability: <span id="hamProb">-</span></h3>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<h2>Model Performance</h2>
-<p>Accuracy: <span id="accuracy">-</span></p>
-<p>Precision: <span id="precision">-</span></p>
-<p>Recall: <span id="recall">-</span></p>
-<p>F1 Score: <span id="f1">-</span></p>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
 
-<script src="/static/script.js"></script>
+  <div class="container">
 
+    <div class="card">
+      <h1><i class="fa-solid fa-envelope-circle-check"></i> Spam Classifier</h1>
+      <p class="subtitle">AI-powered email spam detection</p>
+
+      <textarea id="message" placeholder="Paste your email or message here..."></textarea>
+
+      <button type="button" onclick="predict()">
+        <i class="fa-solid fa-magnifying-glass"></i> Check
+      </button>
+
+      <div class="result-card">
+        <h2 id="prediction">—</h2>
+
+        <div class="probability">
+          <div class="prob spam">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            Spam: <span id="spamProb">-</span>%
+            <div class="bar-bg">
+              <div id="spamBar" class="bar"></div>
+            </div>
+          </div>
+
+          <div class="prob ham">
+            <i class="fa-solid fa-circle-check"></i>
+            Ham: <span id="hamProb">-</span>%
+            <div class="bar-bg">
+              <div id="hamBar" class="bar"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="metrics">
+          <h3><i class="fa-solid fa-chart-line"></i> Model Performance</h3>
+          <div class="metric-grid">
+            <div>Accuracy<br><span id="accuracy">-</span></div>
+            <div>P
